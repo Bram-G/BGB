@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.footer{
+    margin: 15px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+#icons{
+    height: 45px;
+    width: 45px;
+    margin: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 5px;
+    transition: all .3s ease-in-out ;
+    opacity: .5;
+}
+
+#icons:hover{
+    transform: scale(1.2);
+    color: aliceblue;
+    opacity: 1;
+}

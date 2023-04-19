@@ -1,0 +1,15 @@
+#homePageTitle{
+    font-family: 'Passion One';
+font-style: normal;
+font-weight: 400;
+font-size: 90px;
+line-height: 99px;
+color: #3D3A39;
+text-shadow: 0px 6px 30px rgba(0, 0, 0, 0.08);
+}
+#titleBox{
+    display: flex;
+    width: 760px;
+    height: 338px;
+    margin: 100px 65px;;
+}

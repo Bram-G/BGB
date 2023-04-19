@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+}
+
+.title {
+    text-decoration: none;
+  display: flex;
+  margin: 25px;
+  font-family: "Passion One";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 33px;
+  color: #b22a2f;
+  align-items: center;
+}
+
+.login {
+  text-decoration: none;
+  display: flex;
+  margin: 25px 25px 25px 25px;
+  font-family: "Passion One";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 33px;
+  color: #b22a2f;
+  align-items: center;
+}
