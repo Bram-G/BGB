@@ -1,0 +1,85 @@
+#topInfo{
+    display: flex;
+    align-items: center;
+
+}
+#collectionToggle{
+    margin-left: 10px ;
+    width: 22px;
+    height: 22px;
+}
+#titleText{
+    font-family: 'Passion One';
+font-style: normal;
+font-weight: 400;
+font-size: 50px;
+line-height: 55px;
+
+color: #3E3A39;
+
+}
+#quickInfo{
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+}
+.quickInfoIcon{
+    height: 30px;
+    width: 30px;
+    margin-right: 5px;
+}
+.quickInfoText{
+    font-family: 'Passion One';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height: 28px;
+margin-left: 5px;
+color: #3E3A39;
+}
+.quickInfoSubBox{
+    align-items: center;
+    display: flex;
+}
+#mainInfo{
+margin-top: 30px;
+}
+#mainInfoText {
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 23px;
+color: #4D4F4E;
+width: 600px;
+}
+#buttonBox{
+    font-family: 'Passion One';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 24px;
+    margin: 30px;
+    width: 525px;
+    display: flex;
+    justify-content: space-between;
+}
+.btn-dark{
+    font-family: 'Passion One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+    --bs-btn-bg: #3D3A39;
+}
+.button1{
+    width: 218px;
+    height: 48px;
+    border-radius: 8px;
+}
+.button2{
+    width: 247px;
+    height: 48px;
+    border-radius: 8px;
+}
+

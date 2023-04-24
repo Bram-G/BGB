@@ -1,15 +1,40 @@
+#titleBox{
+    display: flex;
+    justify-content: space-between ;
+    margin: 30px 50px 60px 50px;
+}
 #homePageTitle{
+    width: 700px;
     font-family: 'Passion One';
 font-style: normal;
 font-weight: 400;
-font-size: 90px;
+font-size: 80px;
 line-height: 99px;
 color: #3D3A39;
 text-shadow: 0px 6px 30px rgba(0, 0, 0, 0.08);
+min-width: 660px;
 }
-#titleBox{
+.dishPic{
+    margin: 0px 45px 0px 0px;
+    top: 60px;
+    height: 200px;
+    width: 612px;
+    position: relative;
+}
+.bottomRow{
+    height: 250px;
     display: flex;
-    width: 760px;
-    height: 338px;
-    margin: 100px 65px;;
+    justify-content: space-between;
+}
+.page-container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.content-wrap{
+    flex: 1;
+}
+#homePage{
+    height: 540px;
+    margin: 10px;
 }

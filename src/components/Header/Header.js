@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function Header() {
   return (
     <div className="header">
-      <a href="/home" className="title">Board Game Butler</a>
+      <a href="/" className="title">Board Game Butler</a>
       <a href="/login" className="login">Log In</a>
     </div>
   );

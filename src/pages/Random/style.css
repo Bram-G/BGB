@@ -1,0 +1,35 @@
+.gamePic{
+    height: 311px;
+    width: 311px;
+}
+.dishPicCol{
+    margin: 10px;
+}
+#infoBox{
+    margin: 40px 0px 20px 0px;
+}
+#allTogether{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 50px;
+    height: 540px;
+}
+#leftRow{
+    align-content: center;
+    display: flex;
+    width: 700px    ;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 311px;
+
+}
+#rightRow{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 311px;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+
