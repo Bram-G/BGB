@@ -1,0 +1,33 @@
+#loginPage{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+#loginBox{
+    width: 600px
+}
+.titleText{
+    font-family: "Passion One" ;
+}
+
+.signUp{
+    font-family:"roboto" ;
+    font-size: 16px;
+    margin: 0px 5px 0px 25px;
+    color: #4d4f4e;
+    display: flex;
+    align-items: center;
+}
+.underDiv{
+    /* align-content: center; */
+    display: flex;
+    margin-top: 20px;
+
+}
+.signUp a {
+    margin-left: 5px;
+    text-decoration: none;
+}
+   
+
+

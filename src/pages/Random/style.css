@@ -1,6 +1,10 @@
 .gamePic{
     height: 311px;
     width: 311px;
+    min-height: 311px;
+    min-width: 311px;
+    max-height: 311px;
+    max-width: 311px;
 }
 .dishPicCol{
     margin: 10px;

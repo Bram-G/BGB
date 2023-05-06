@@ -1,21 +1,53 @@
 import { React, useState, useEffect } from "react";
 import "./style.css";
 import { Container } from "react-bootstrap";
-import Search from "../../components/Search/Search";
 import Info from "../../components/Info/Info";
 import SearchRandom from "../../components/Searchrandom/Searchrandom";
 import Dish from "./assets/dish.png";
-import testImg from "./assets/testimg.jpg";
-
 
 function Random() {
+  // TODO: Ping board game atlas API for random game and grab title
 
-  // TODO: Ping API for random game
-  // TODO: Grab Title, Image, Description, Players, Playtime, Rank, Price,Amazon link and BGA link
-  // TODO: Pass those values to Info component
+    const [gameData, setGameData] = useState({
+      title: "",
+      image: "",
+      description: "",
+      players: "",
+      time: "",
+      rank: "",
+      price: "",
+      bga: false,
+    });
+  
+    const randomURL =
+      "https://api.boardgameatlas.com/api/search?random=true&client_id=gwluPRwMeB&pretty=true";
+  
+    function randomGameFetch() {
+      fetch(randomURL)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          const game = data.games[0];
+          setGameData({
+            title: game.name,
+            image: game.images.medium,
+            description: game.description_preview,
+            players: `${game.min_players}-${game.max_players}`,
+            time: `${game.min_playtime}-${game.max_playtime}`,
+            rank: game.rank,
+            price: game.price,
+            bga: true,
+          });
+        });
+    }
+  
+    useEffect(() => {
+      randomGameFetch();
+    }, []);
+
   //TODO: if <boardgamefamily objectid="70360">Digital Implementations: Board Game Arena</boardgamefamily> exists render button with link to BGA
 
-    const gameArray = [];
+  // const gameArray = [];
   // const url = 'https://cors-anywhere.herokuapp.com/https://boardgamegeek.com/xmlapi/collection/Pahrrk';
   // const gameFetch = fetch(url)
   // .then(response => response.text())
@@ -34,7 +66,6 @@ function Random() {
   // .catch(error => console.error(error));
   // const consolelog = new DOMParser().parseFromString(danUserGames, "text/xml")
 
-
   return (
     <div className="home">
       <Container fluid>
@@ -43,16 +74,22 @@ function Random() {
             <div>
               <SearchRandom></SearchRandom>
               <div id="infoBox">
-                <Info>
-                  
-                </Info>
+                <Info
+                  title={gameData.title}
+                  image={gameData.image}
+                  description={gameData.description}
+                  players={gameData.players}
+                  time={gameData.time}
+                  rank={gameData.rank}
+                  price={gameData.price}
+                ></Info>
               </div>
               <div></div>
             </div>
           </div>
 
           <div id="rightRow">
-            <img className="gamePic" src={testImg}></img>
+            <img className="gamePic" src={gameData.image}></img>
             <img className="dishPicCol" src={Dish}></img>
           </div>
         </div>

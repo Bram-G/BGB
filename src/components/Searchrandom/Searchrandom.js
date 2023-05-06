@@ -8,6 +8,10 @@ import { faSearch,faDice } from '@fortawesome/free-solid-svg-icons'
 import { Button } from "react-bootstrap";
 
 function SearchRandom() {
+  function roll() {
+    window.location.reload(false);
+    
+  }
 
 
     return(
@@ -18,7 +22,7 @@ function SearchRandom() {
   aria-label="Search"
   aria-describedby="basic-addon1"
 />
-<Button onclick=""id="basic-addon1"><FontAwesomeIcon icon={faDice} color="black" /></Button>
+<Button onClick={roll}id="basic-addon1" className="randomRollBtn"><FontAwesomeIcon icon={faDice} color="black" /></Button>
 </InputGroup>
     )
 }
