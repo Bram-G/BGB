@@ -18,7 +18,8 @@ function Search() {
     setSearchTerm(event.target.value);
   };
 
-  const handleSearch = async () => {
+  const handleSearch = async (e) => {
+    e.preventDefault();
     try {
       console.log("handleSearch")
       const response = await fetch(
@@ -32,7 +33,7 @@ function Search() {
         const firstItemId = items[0].getAttribute("id");
         // Redirect to the results page with the first item's ID
         console.log( firstItemId )
-        // navigate(`/search/${firstItemId}`);
+        navigate(`/search/${firstItemId}`);
       } else {
         console.log("No search results found");
       }

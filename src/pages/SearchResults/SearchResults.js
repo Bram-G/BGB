@@ -9,6 +9,7 @@ import Search from "../../components/Search/Search";
 function SearchResults() {
 
    const gameID = window.location.pathname.split("/")[2];
+   console.log(gameID)
 
    const [gameData, setGameData] = useState({
     title: "",
@@ -24,15 +25,19 @@ function SearchResults() {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch(`https://boardgamegeek.com/xmlapi2/thing?id=${gameID}`);
+          const response = await fetch(`https://boardgamegeek.com/xmlapi2/thing?id=${gameID}&type=boardgame&stats=1`);
           const xmlData = await response.text();
           const parser = new DOMParser();
           const xmlDoc = parser.parseFromString(xmlData, 'application/xml');
+          console.log(xmlDoc)
   
           // Parse the XML data and extract the variables
           const title = xmlDoc.querySelector('item name').getAttribute('value');
-          const image = xmlDoc.querySelector('item image')
-          const description = xmlDoc.querySelector('item description').textContent;
+          const xmlImage = xmlDoc.querySelector('item image').textContent
+          const image = xmlImage 
+          const unfilteredDescription = xmlDoc.querySelector('item description').textContent;
+          console.log(unfilteredDescription)
+          const description = unfilteredDescription.replace(/[/&#?(\d+);/g]/g, "  ");
           const minplayers = xmlDoc.querySelector('item minplayers').getAttribute('value');
           const maxplayers = xmlDoc.querySelector('item maxplayers').getAttribute('value');
           const players = `${minplayers}-${maxplayers}`;
@@ -40,11 +45,13 @@ function SearchResults() {
           const maxplaytime = xmlDoc.querySelector('item maxplaytime').getAttribute('value');
           const time = `${minplaytime}-${maxplaytime}`;
           const rank = xmlDoc.querySelector('item statistics ratings ranks rank').getAttribute('value');
-          const bgaElement = xmlDoc.querySelector('item link type="boardgamefamily" id="70360" value="Digital Implementations: Board Game Arena"');
-          const bga = bgaElement ? true : false;
+          // const bgaElement = xmlDoc.querySelector('item link type="boardgamefamily" id="70360" value="Digital Implementations: Board Game Arena"');
+          // const bga = bgaElement ? true : false;
+          const bga = false;
           // Add more variables extraction as needed
   
           // Set the game data to the extracted variables
+          console.log(image);
           setGameData({ title, image, description, players, time, rank, bga });
         } catch (error) {
           console.error('Error fetching game data:', error);
@@ -61,7 +68,7 @@ function SearchResults() {
         <div id="allTogether">
           <div id="leftRow">
             <div>
-              <Search></Search>
+              <SearchRandom></SearchRandom>
               <div id="infoBox">
                 <Info
                   title={gameData.title}
