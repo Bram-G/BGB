@@ -21,15 +21,22 @@ function Search() {
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
+      var gameSearchArray = [];
       console.log("handleSearch")
       const response = await fetch(
-        `https://boardgamegeek.com/xmlapi2/search?parameters&query=${searchTerm}`
+        `https://boardgamegeek.com/xmlapi2/search?parameters&query=${searchTerm}&type=boardgame`
       );
       const xmlResponse = await response.text();
       const parser = new DOMParser();
       const xmlDoc = parser.parseFromString(xmlResponse, "application/xml");
       const items = xmlDoc.getElementsByTagName("item");
       if (items.length > 0) {
+        for (let i = 0; i<items.length; i++) {
+          const name = items[i].getAttribute("id");
+          gameSearchArray.push(name);
+          console.log(name)
+        }
+        localStorage.setItem("gameSearchArray",(gameSearchArray));
         const firstItemId = items[0].getAttribute("id");
         // Redirect to the results page with the first item's ID
         console.log( firstItemId )

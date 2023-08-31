@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between ;
     margin: 30px 50px 60px 50px;
+    height: 100%    ;
 }
 #homePageTitle{
     width: 700px;
@@ -16,15 +17,15 @@ min-width: 660px;
 }
 .dishPic{
     margin: 0px 45px 0px 0px;
-    top: 60px;
+    /* top: 60px; */
     height: 200px;
     width: 612px;
     position: relative;
 }
 .bottomRow{
-    height: 250px;
+    height: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 .page-container{
     display: flex;
@@ -35,6 +36,6 @@ min-width: 660px;
     flex: 1;
 }
 #homePage{
-    height: 540px;
+    height: 100%;
     margin: 10px;
 }

@@ -1,0 +1,19 @@
+.carouselContainer{
+    /* margin: 100px 0px 100px 0px; */
+}
+
+.expansionCarousel{
+    /* margin: 50px 0px 0px 0px; */
+    padding: 0px 0px 0px 0px;
+}
+
+.carouselTitle{
+    margin-top: 50px;
+    font-family: 'Passion One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: calc(1.1vw + 1.1em);
+    line-height: 55px;
+    color: #3E3A39;
+
+}

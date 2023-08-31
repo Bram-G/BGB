@@ -4,6 +4,7 @@ import { Container } from "react-bootstrap";
 
 import Dish from "./assets/dish.png";
 import Search from "../../components/Search/Search";
+import HotGames from "../../components/HotGames/HotGames";
 
 
 function Home() {
@@ -22,6 +23,7 @@ function Home() {
            <img className="dishPic" src={Dish}></img>
            
         </div>
+        <HotGames></HotGames>
         </div>
         
 

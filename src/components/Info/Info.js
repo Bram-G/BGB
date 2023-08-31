@@ -47,7 +47,7 @@ function Info(props) {
         <div className="quickInfoSubBox">
           {/* change info text to {props.price} */}
           <img className="quickInfoIcon" title="Cost" src={price}></img>
-          <div className="quickInfoText">{props.price}</div>
+          <div className="quickInfoText">{props.publisher}</div>
         </div>
       </div>
       <div id="mainInfo">

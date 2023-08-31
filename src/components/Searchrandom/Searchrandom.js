@@ -36,6 +36,7 @@ function SearchRandom() {
         window.location.reload();
       } else {
         console.log("No search results found");
+        alert("No search results found");
       }
     } catch (error) {
       console.error("Error searching for board game:", error);
