@@ -7,13 +7,52 @@ import people from "./assets/people.png";
 import playtime from "./assets/playtime.png";
 import price from "./assets/price.png";
 import rank from "./assets/rank.png";
+import API from "../../utils/api";
 
 function Info(props) {
+    const [imgSrc, setImgSrc] = useState(toggleAdd);  
+    // const gameID = window.location.pathname.split("/")[2];
+  const gameID = props.gameID;
+  console.log(gameID);
+  //  ping it on the page and enter it as props.
+  const currentUserId = props.userId;
+  // console.log(currentUserId);
+  useEffect(() => {
+    console.log(props);
+    
+    // if the game's id is in the user's collection, display the toggleSub image, else display the toggleAdd image.
+    // if the user clicks the toggleSub image, remove the game's id from the user's collection.
+    // if the user clicks the toggleAdd image, add the game's id to the user's collection.
+    if (props.bgData.includes(props.gameID)) {
+      setImgSrc(toggleSub);
+      console.log("in collection");
+    } else {
+      setImgSrc(toggleAdd);
+      console.log("not in collection");
+    }
+  }, [props]);
 
-    const [imgSrc, setImgSrc] = useState(toggleAdd);
+
 
     const handleClick = () => {
-      setImgSrc(imgSrc === toggleAdd ? toggleSub : toggleAdd);}
+      console.log("clicked " + gameID + " from collection " + currentUserId);
+if(props.loggedIn === true){
+
+  
+  if (imgSrc === toggleAdd) {
+    setImgSrc(toggleSub);
+    API.addGame(currentUserId,gameID);
+        console.log("added"  + gameID + "to collection" + currentUserId);
+      } else {
+        setImgSrc(toggleAdd);
+        API.removeGame(currentUserId,gameID);
+        console.log("removed" + gameID + "from collection" + currentUserId);
+      }
+      setImgSrc(imgSrc === toggleAdd ? toggleSub : toggleAdd);
+    } else {
+      alert("Please log in to add games to your collection");
+    }
+      }
 
   const gameLink = `https://www.amazon.com/s?k=${props.title}+board+game`
   return (

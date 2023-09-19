@@ -10,9 +10,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
     background-color: #e7e7e71e;
     border-radius: 20px;
     margin: 5px;
     border: 2px #3E3A39 solid;
     line-height: 20px;
+    height: 300px;
 }

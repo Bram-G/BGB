@@ -1,0 +1,104 @@
+.collection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 80%;
+}
+
+.collectionBox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.collectionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  height: 250px;
+  margin: 50px;
+}
+
+.collectionImage {
+  height: 100%;
+  width: 100%;
+  background-color: #f5f5f5;
+}
+.boardGameImage {
+  height: 100%;
+  width: 100%;
+  width: 250px;
+    height: 250px;
+  border-radius: 10px;
+  transition: all 0.5s ease-in-out;
+}
+.boardGameImage:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+  box-shadow: 0px 0px 10px 0px #3e3a39;
+}
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.collectionText{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.collectionTitle{
+    font-family: Passion One;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    color: #3d3a39;
+    text-shadow: 0px 6px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.5s ease-in-out;
+    text-decoration: none;
+}
+#collectionTextStyle {
+  color: #3d3a39;
+  text-align: center;
+  text-shadow: 0px 6px 30px rgba(0, 0, 0, 0.08);
+  font-family: Passion One;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  transition: all 0.5s ease-in-out;
+  text-decoration: none;
+}
+#collectionTextStyle:hover {
+  text-decoration: underline;
+  font-size: 41px;
+}
+.randomGame{
+  width: 250px;
+  height: 48px;
+  border-radius: 8px;
+background: #3D3A39;
+color: #FFF;
+text-align: center;
+font-family: Passion One;
+font-size: 24px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px; /* 100% */
+letter-spacing: 0.5px;
+
+}
+

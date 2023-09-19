@@ -1,10 +1,16 @@
-import { React, useState, useEffect } from "react";
+import { React } from "react";
 import "./style.css";
 
 function CarouselCard(props) {
+
+function handleClick () {
+    console.log("Clicked")
+    localStorage.setItem("gameSearchTerm",(props.name));
+}
+
     return(
-        <div className="carouselCard">
-            <a href={`/search/${props.link}`}>
+        <div key={props.key} className="carouselCard">
+            <a href={`/search/${props.link}`} onClick={handleClick}>
 
             <div className="carouselCardImageContainer">
                 <img className="carouselCardImage" src={props.image} alt="placeholder"/>

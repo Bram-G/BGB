@@ -33,7 +33,7 @@ function ChatBot(props) {
     console.log(infoNugget);
 
     axios
-      .post("http://localhost:3001/chat", { infoNugget })
+      .post("http://localhost:8080/chat", { infoNugget })
       .then((res) => {
         // setBotResponse(res.data);
         // console.log(botResponse);
@@ -55,7 +55,7 @@ function ChatBot(props) {
   };
 
   return (
-    <div>
+    <div className="chatBot">
       <div className="chatBotContainer">
         <div className="chatView">
           <div className="chatBotResponse">

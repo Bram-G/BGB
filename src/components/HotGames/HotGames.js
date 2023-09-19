@@ -70,10 +70,10 @@ function HotGames() {
         <div className="hotGamesView">
           <div className="carouselTitle">Hot Games</div>
           <Carousel
-      centerMode={true}
+      centerMode={false}
         responsive={responsive}
         autoPlay={true}
-        autoPlaySpeed={3000}
+        autoPlaySpeed={5000}
         swipeable={true}
         draggable={true}
         showDots={true}

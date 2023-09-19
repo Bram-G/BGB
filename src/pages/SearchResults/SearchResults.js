@@ -7,10 +7,14 @@ import Dish from "./assets/dish.png";
 // import Search from "../../components/Search/Search";
 import DidYouMean from "../../components/DidYouMean/DidYouMean";
 import ChatBot from "../../components/ChatBot/ChatBot";
+import API from "../../utils/api";
 
-function SearchResults() {
+function SearchResults(props) {
   const gameID = window.location.pathname.split("/")[2];
   // console.log(gameID);
+
+  const [userData, setUserData] = useState([]);
+  const [bgData, setBGData] = useState([]);
 
   const [gameData, setGameData] = useState({
     title: "",
@@ -80,19 +84,52 @@ function SearchResults() {
         );
         const rank = rankElement ? rankElement.getAttribute("value") : "";
 
-        const linkElement = xmlDoc.querySelector('link[type="boardgamepublisher"]');
-          const publisher = linkElement.getAttribute("value");
-          console.log(publisher);
+        const linkElement = xmlDoc.querySelector(
+          'link[type="boardgamepublisher"]'
+        );
+        const publisher = linkElement.getAttribute("value");
+        console.log(publisher);
 
         const bga = false;
 
         console.log(publisher);
-        setGameData({ title, image, description, players, time, rank, bga, publisher });
+        setGameData({
+          title,
+          image,
+          description,
+          players,
+          time,
+          rank,
+          bga,
+          publisher,
+        });
       } catch (error) {
         console.error("Error fetching game data:", error);
       }
     };
 
+    const fetchUserData = async () => {
+      try {
+        const savedToken = localStorage.getItem("token");
+
+        if (savedToken) {
+          const response = await API.isValidToken(savedToken);
+          if (response.isValid) {
+            const data = await API.getSingleUser(response.user.username);
+            console.log(data);
+            setUserData(data);
+            setBGData(data.bg_collection);
+            localStorage.setItem("userId", data.id);
+          } else {
+            localStorage.removeItem("token");
+          }
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    console.log(props.loggedIn)
+    fetchUserData();
     fetchMainData();
   }, [gameID]);
 
@@ -100,36 +137,41 @@ function SearchResults() {
     <div className="home">
       <Container fluid>
         <div id="allTogether">
-          <div id="leftRow">
-            <div>
-              <Search></Search>
-              <div id="infoBox">
-                <Info
-                  title={gameData.title}
-                  image={gameData.image}
-                  description={gameData.description}
-                  players={gameData.players}
-                  time={gameData.time}
-                  rank={gameData.rank}
-                  price={gameData.price}
-                  publisher={gameData.publisher} 
-                ></Info>
+          <div id="topRow">
+            <div id="leftRow">
+              <div>
+                <Search></Search>
+                <div id="infoBox">
+                  <Info
+                  loggedIn={props.loggedIn}
+                    gameID={gameID}
+                    userId={userData.id}
+                    bgData={bgData}
+                    title={gameData.title}
+                    image={gameData.image}
+                    description={gameData.description}
+                    players={gameData.players}
+                    time={gameData.time}
+                    rank={gameData.rank}
+                    price={gameData.price}
+                    publisher={gameData.publisher}
+                  ></Info>
+                </div>
               </div>
-              <ChatBot
+            </div>
+            <div id="rightRow">
+              <img className="gamePic" src={gameData.image}></img>
+              <img className="dishPicCol" src={Dish}></img>
+            </div>{" "}
+          </div>
+          <div id="bottomRow">
+            <ChatBot
               title={gameData.title}
               publisher={gameData.publisher}
-              ></ChatBot>
-              <div></div>
-            </div>
-          </div>
-
-          <div id="rightRow">
-            <img className="gamePic" src={gameData.image}></img>
-            <img className="dishPicCol" src={Dish}></img>
+            ></ChatBot>
           </div>
         </div>
         <div className="bottomHalf">
-          
           <div className="didYouMeanContainer">
             <DidYouMean></DidYouMean>
           </div>

@@ -3,7 +3,6 @@
   display: flex;
   justify-content: space-between;
   height: 80px;
-  margin-bottom: 40px;
 }
 
 .title {
@@ -17,6 +16,7 @@
   line-height: 33px;
   color: #b22a2f;
   align-items: center;
+  transition: all 0.2s ;
 }
 
 .login {
@@ -30,4 +30,16 @@
   line-height: 33px;
   color: #b22a2f;
   align-items: center;
+  transition: all 0.1s ;
+}
+.login:hover {
+  color: #b22a2fd5;
+  /* scale: 1.1; */
+}
+.title:hover {
+  color: #b22a2fd5;
+  /* scale: 1.1; */
+}
+#rightSideHead{
+  display: flex;
 }

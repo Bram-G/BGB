@@ -34,13 +34,15 @@ function Search() {
         for (let i = 0; i<items.length; i++) {
           const name = items[i].getAttribute("id");
           gameSearchArray.push(name);
-          console.log(name)
+          // console.log(name) 
         }
-        localStorage.setItem("gameSearchArray",(gameSearchArray));
+        // localStorage.setItem("gameSearchArray",(gameSearchArray));
+        localStorage.setItem("gameSearchTerm",(searchTerm));
         const firstItemId = items[0].getAttribute("id");
         // Redirect to the results page with the first item's ID
         console.log( firstItemId )
         navigate(`/search/${firstItemId}`);
+        window.location.reload();
       } else {
         console.log("No search results found");
       }
@@ -88,12 +90,6 @@ function Search() {
         aria-label="Search"
         aria-describedby="basic-addon1"
       />
-      <a href="/random">
-        {" "}
-        <Button id="basic-addon1">
-          <FontAwesomeIcon icon={faDice} color="black" />
-        </Button>
-      </a>
     </InputGroup>
         </Form>
   );

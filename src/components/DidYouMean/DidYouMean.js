@@ -12,8 +12,30 @@ function DidYouMean() {
   useEffect(() => {
     const fetchSecondaryData = async () => {
       try {
-        // console.log("fetchSecondaryData");
-        // Assuming your IDs are stored as an array in local storage
+        const arrayOfSimilarGames = [];
+        // grabbing the search term from local storage
+        const gameSearchTerm = localStorage.getItem("gameSearchTerm");
+        // getting the search results from BGG
+        const response = await fetch(
+          `https://boardgamegeek.com/xmlapi2/search?parameters&query=${gameSearchTerm}&type=boardgame`
+        );
+          // parsing the results
+        const xmlResponse = await response.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlResponse, "application/xml");
+        const items = xmlDoc.getElementsByTagName("item");
+        // if length greater than 0, iterate through the results and push the IDs to an array
+        if (items.length > 0) {
+          for (let i = 0; i < items.length; i++) {
+            const name = items[i].getAttribute("id");
+            arrayOfSimilarGames.push(name);
+            // console.log(name);
+          }
+          localStorage.setItem("gameSearchArray", arrayOfSimilarGames);
+          // console.log("Array of Similar Games" + arrayOfSimilarGames);
+        } else {
+          console.log("No search results found");
+        }
         const gameSearchArray = localStorage.getItem("gameSearchArray");
 
         // Construct the API URL using the IDs from local storage
@@ -54,7 +76,6 @@ function DidYouMean() {
               // Convert the Set to an array if needed
               const uniqueExpansionIds = Array.from(gameExpansionResults);
 
-             
               gameExpansionIDResults = uniqueExpansionIds.join(",");
 
               const gameResult = {
@@ -76,7 +97,13 @@ function DidYouMean() {
             console.error("Error:", error);
           });
       } catch (error) {}
+
     };
+    fetchSecondaryData();
+  }, []);
+
+
+    useEffect(() => {
 
     const fetchExpansionData = async () => {
       try {
@@ -121,35 +148,35 @@ function DidYouMean() {
     };
 
     // console.log("gameExpansionFinalResults" + gameSearchFinalExpansionArray);
-    fetchSecondaryData();
+
     fetchExpansionData();
-  }, [gameSearchExpansionArray, gameSearchFinalExpansionArray]);
+  }, [gameSearchExpansionArray]);
 
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 4,
-      slidesToSlide: 4 // optional, default to 1.
+      slidesToSlide: 4, // optional, default to 1.
     },
     tablet: {
       breakpoint: { max: 1024, min: 768 },
       items: 3,
-      slidesToSlide: 3 // optional, default to 1.
+      slidesToSlide: 3, // optional, default to 1.
     },
     mobile: {
       breakpoint: { max: 767, min: 464 },
       items: 2,
-      slidesToSlide: 1 // optional, default to 1.
-    }
+      slidesToSlide: 1, // optional, default to 1.
+    },
   };
   return (
     <div className="carouselContainer">
       <div className="carouselTitle">Other Games</div>
       <Carousel
-      centerMode={true}
+        centerMode={false}
         responsive={responsive}
         autoPlay={true}
-        autoPlaySpeed={3000}
+        autoPlaySpeed={4000}
         swipeable={true}
         draggable={true}
         showDots={true}
@@ -169,19 +196,19 @@ function DidYouMean() {
           );
         })}
       </Carousel>
-        <div className="carouselTitle">Expansions</div>
+      <div className="carouselTitle">Expansions</div>
       <Carousel
-      centerMode={true}
-      className="expansionCarousel"
-      responsive={responsive}
-      autoPlay={true}
-      autoPlaySpeed={3000}
-      swipeable={true}
-      draggable={true}
-      showDots={true}
-      infinite={true}
-      partialVisible={false}
-      dotListClass="custom-dot-list-style"
+        centerMode={false}
+        className="expansionCarousel"
+        responsive={responsive}
+        autoPlay={true}
+        autoPlaySpeed={4000}
+        swipeable={true}
+        draggable={true}
+        showDots={true}
+        infinite={true}
+        partialVisible={false}
+        dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-40-px"
       >
         {gameSearchFinalExpansionArray.map((gameExpansionResult) => {

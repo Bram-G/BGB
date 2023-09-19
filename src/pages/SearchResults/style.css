@@ -1,0 +1,20 @@
+#topRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 80%;
+}
+#bottomRow{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+}
+.didYouMeanContainer{
+    display: flex;
+    justify-content: center;
+}
+.bottomHalf{
+    margin-bottom: 50px;
+}
