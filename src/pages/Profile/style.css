@@ -108,3 +108,9 @@
   font-weight: 400;
   line-height: normal;
 }
+#editIcon:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+

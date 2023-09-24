@@ -26,3 +26,10 @@
     color: aliceblue;
     opacity: 1;
 }
+
+@media screen and (max-width: 1200px) {
+    #icons{
+        margin: 20px;
+    }
+}
+    

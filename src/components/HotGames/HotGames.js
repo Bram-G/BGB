@@ -17,23 +17,81 @@ function HotGames() {
       const parser = new DOMParser();
       const xmlDoc = parser.parseFromString(xmlData, "application/xml");
       const items = xmlDoc.getElementsByTagName("item");
+
       const gameArray = [];
 
-        for (let i = 0; i < items.length; i++) {
+        for (let i = 0; i < 35; i++) {
             const id = items[i].getAttribute("id");
-            const image = items[i].querySelector("thumbnail").getAttribute("value");
             const name = items[i].querySelector("name").getAttribute("value");
             const rank = items[i].getAttribute("rank");
+
+            const response = await fetch(
+              `https://boardgamegeek.com/xmlapi2/thing?id=${id}&type=boardgame,boardgameexpansion&stats=1`
+            );
+            const xmlData = await response.text();
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlData, "application/xml");
+            // console.log(xmlDoc);
+            const imageElement = xmlDoc.querySelector("item image");
+            const image = imageElement ? imageElement.textContent : "";
+    
+            const unfilteredDescriptionElement =
+              xmlDoc.querySelector("item description");
+            const unfilteredDescription = unfilteredDescriptionElement
+              ? unfilteredDescriptionElement.textContent
+              : "";
+            // console.log(unfilteredDescription);
+            const nonLimitedDescription = unfilteredDescription.replace(
+              /[/&#?(\d+);/]/g,
+              "  "
+            );
+            const limitedDescription = limitDescription(nonLimitedDescription, 92);
+            function limitDescription(description, maxLength) {
+              if (description.length <= maxLength) {
+                return description;
+              } else {
+                return description.slice(0, maxLength - 3) + '...';
+              }
+            }
+    
+            const minplayersElement = xmlDoc.querySelector("item minplayers");
+            const minplayers = minplayersElement
+              ? minplayersElement.getAttribute("value")
+              : "";
+    
+            const maxplayersElement = xmlDoc.querySelector("item maxplayers");
+            const maxplayers = maxplayersElement
+              ? maxplayersElement.getAttribute("value")
+              : "";
+    
+            const players = `${minplayers}-${maxplayers}`;
+    
+            const minplaytimeElement = xmlDoc.querySelector("item minplaytime");
+            const minplaytime = minplaytimeElement
+              ? minplaytimeElement.getAttribute("value")
+              : "";
+    
+            const maxplaytimeElement = xmlDoc.querySelector("item maxplaytime");
+            const maxplaytime = maxplaytimeElement
+              ? maxplaytimeElement.getAttribute("value")
+              : "";
+    
+            const time = `${minplaytime}-${maxplaytime}`;
+
+
 
             const gameData = {
                 id: id,
                 image: image,
                 name: name,
                 rank: rank,
+                desc: limitedDescription,
+                players: players,
+                time: time
             }
             
             gameArray.push(gameData);
-            console.log(gameArray);
+            // console.log(gameArray);
         }
         setHotGameArray(gameArray);
 
@@ -47,20 +105,30 @@ function HotGames() {
     fetchHotData();
   }, []);
   const responsive = {
+    wideDesktop: {
+      breakpoint: { max: 3000, min: 2000 },
+      items: 5,
+      slidesToSlide: 5 // optional, default to 1.
+    },
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 10,
-      slidesToSlide: 4 // optional, default to 1.
+      breakpoint: { max: 2000, min: 1600 },
+      items: 4,
+      slidesToSlide: 5 // optional, default to 1.
+    },
+    laptop: {
+      breakpoint: { max: 1200, min: 1024 },
+      items: 3,
+      slidesToSlide: 3// optional, default to 1.
     },
     tablet: {
-      breakpoint: { max: 1024, min: 768 },
-      items: 8,
-      slidesToSlide: 3 // optional, default to 1.
+      breakpoint: { max: 800, min: 500 },
+      items: 2,
+      slidesToSlide: 2// optional, default to 1.
     },
     mobile: {
       breakpoint: { max: 767, min: 464 },
-      items: 5,
-      slidesToSlide: 1 // optional, default to 1.
+      items: 2,
+      slidesToSlide: 2 // optional, default to 1.
     }
   };
 
@@ -70,28 +138,34 @@ function HotGames() {
         <div className="hotGamesView">
           <div className="carouselTitle">Hot Games</div>
           <Carousel
-      centerMode={false}
+        centerMode={false}
         responsive={responsive}
-        autoPlay={true}
-        autoPlaySpeed={5000}
+        autoPlay={false}
+        autoPlaySpeed={10000}
         swipeable={true}
         draggable={true}
-        showDots={true}
+        showDots={false}
         infinite={true}
         partialVisible={false}
         dotListClass="custom-dot-list-style"
-        itemClass="carousel-item-padding-40-px"
+        itemClass="carousel-item-padding-40-px carousel-item2"
       >
         {hotGameArray.map((gameResult) => {
           return (
-            <div className="hotGame"> 
-                <div className="rank">{gameResult.rank}</div>
+            <div key={gameResult.id} className="hotGame"  > 
+                
 
             <CarouselCard
-              key={gameResult.id}
+            
+            desc = {gameResult.desc}
+            rank={gameResult.rank}
+              id={gameResult.id}
               name={gameResult.name}
               image={gameResult.image}
               link={gameResult.id}
+              age={gameResult.age}
+              players={gameResult.players}
+              time={gameResult.time}
               ></CarouselCard>
               </div>
           );

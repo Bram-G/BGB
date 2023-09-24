@@ -65,10 +65,19 @@ function ChatBot(props) {
             <div
               key={index}
               className={`message ${
-                message.isUser ? "chatBotUserInput" : "chatBotResponse"
+                message.isUser
+                  ? "chatBotUserInputContainer"
+                  : "chatBotResponseContainer"
               }`}
             >
-              {message.text}
+              <div
+                key={index}
+                className={`message ${
+                  message.isUser ? "chatBotUserInput" : "chatBotResponse"
+                }`}
+              >
+                {message.text}
+              </div>
             </div>
           ))}
 

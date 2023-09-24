@@ -82,6 +82,7 @@ function SignUp() {
             
   return (
     <div id="loginPage">
+      <div id="loginContainer">
       <div id="loginBox">
       <Container fluid>
         <Row className="justify-content-center">
@@ -105,6 +106,7 @@ function SignUp() {
           </Form>
         </Row>
       </Container>
+      </div>
       </div>
     </div>
   );

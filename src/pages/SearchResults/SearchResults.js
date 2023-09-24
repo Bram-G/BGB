@@ -88,11 +88,12 @@ function SearchResults(props) {
           'link[type="boardgamepublisher"]'
         );
         const publisher = linkElement.getAttribute("value");
-        console.log(publisher);
+        // console.log(publisher);
 
         const bga = false;
 
-        console.log(publisher);
+        // console.log(publisher);
+        localStorage.setItem("gameSearchTerm", title);
         setGameData({
           title,
           image,
@@ -116,7 +117,7 @@ function SearchResults(props) {
           const response = await API.isValidToken(savedToken);
           if (response.isValid) {
             const data = await API.getSingleUser(response.user.username);
-            console.log(data);
+            // console.log(data);
             setUserData(data);
             setBGData(data.bg_collection);
             localStorage.setItem("userId", data.id);
@@ -128,7 +129,7 @@ function SearchResults(props) {
         console.log(err);
       }
     };
-    console.log(props.loggedIn)
+    // console.log(props.loggedIn)
     fetchUserData();
     fetchMainData();
   }, [gameID]);
@@ -140,7 +141,10 @@ function SearchResults(props) {
           <div id="topRow">
             <div id="leftRow">
               <div>
+                <div className="searchBoxContainer">
+
                 <Search></Search>
+                </div>
                 <div id="infoBox">
                   <Info
                   loggedIn={props.loggedIn}

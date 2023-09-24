@@ -21,10 +21,12 @@ function Home() {
         <div id="homePage">
 
         <div id="titleBox">
-          <div id="homePageTitle">Find the Perfect Game for Your Night In</div>
+          <div id="homePageTitle">Find the Perfect Game <b/><b/> for Your Night In</div>
         </div>
         <div className="bottomRow">
+          <div className="searchBarBox">
            <Search></Search>  
+          </div>
            <img className="dishPic" src={Dish}></img>
            
         </div>

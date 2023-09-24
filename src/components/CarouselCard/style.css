@@ -1,29 +1,114 @@
-.carouselCard{
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* background-color: gray; */
+.carouselCard {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.carouselGameImg {
+  width: 99%;
+  height: 70%;
+  min-width: 99%;
+}
+.carouselBottom{
+  position: absolute;
+  height: 50%;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #F6F6F6;
+  display: flex;
+  justify-content: center;
+
 }
 
-.carouselCardImageContainer{
-    height: 200px;
-    width: 100%;
-    overflow: hidden;
+.carouselBottomInfo{
+  width: 85%;
+
+
+}
+.carouselGameName{
+  margin-top: 20px;
+  height: 20%;
+  overflow-y: scroll;
+  color: #3E3A39;
+font-family: Passion One;
+font-size: 30px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+-ms-overflow-style: none;  /* IE and Edge */
+scrollbar-width: none;  /* Firefox */
+
+}
+.carouselGameName::-webkit-scrollbar {
+  display: none !important;
+}
+.carouselGameDesc{
+  color: #4D4F4E;
+font-family: Roboto;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+height: 40%;
+overflow-y: scroll;
+
+scrollbar-width: 0px;
+}
+.carouselGameDesc::-webkit-scrollbar {
+  display: none !important;
 }
 
-.carouselCardImage{
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
+/* Hide scrollbar for IE, Edge and Firefox */
+.carouselGameDesc {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
-.carouselCardTitle{
-    font-family: 'Passion One';
-    font-style: normal;
-    font-weight: 400;
-    font-size: calc(.5vw + .5em);
-    color: #3E3A39;
-    align-items: center;
-    text-align: center;
-    text-decoration: none;
+.carouselAuxInfo{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.carouselGameRank,.carouselGamePlayers,.carouselGameTime{
+  color: #3E3A39;
+font-family: Passion One;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+@media screen and (max-width: 1600px){
+  .carouselGameDesc{
+    font-size: 15px;
+  }
+  .carouselGameName{
+    font-size: 25px;
+  }
+  
+}
+@media screen and (max-width: 1500px){
+  .carouselGameDesc{
+    font-size: 14px;
+  }
+  .carouselGameName{
+    font-size: 25px;
+  }
+  .carouselGameRank,.carouselGamePlayers,.carouselGameTime{
+    font-size: 16px;
+  }
+  .carouselGameRank svg{
+    width: 20px;
+    height: 20px;
+  }
+  .carouselGamePlayers svg{
+    width: 20px;
+    height: 20px;
+  }
+  .carouselGameTime svg{
+    width: 20px;
+    height: 20px;
+  }
+  
 }

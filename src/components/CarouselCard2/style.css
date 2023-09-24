@@ -1,0 +1,50 @@
+.carouselCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #e7e7e71e;
+  border-radius: 20px;
+  /* border: 2px #3e3a39 solid; */
+  line-height: 20px;
+  height: 100%;
+  width: 100%;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+}
+
+.react-multi-carousel-item {
+  display: flex;
+  justify-content: center;
+}
+
+.carouselCardImageContainer {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.carouselCardImage {
+  /* height: 130px; */
+width: 90%;
+  object-fit: cover;
+  border: solid 2px #3e3a39;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+}
+.carouselCardTitle {
+  height: 10%;
+  font-family: "Passion One";
+  font-style: normal;
+  font-weight: 400;
+  font-size: calc(0.5vw + 0.5em);
+  color: #3e3a39;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+}
+.imgATag {
+  width: 100%;
+  height: 100%;
+  min-height: 50%;
+}

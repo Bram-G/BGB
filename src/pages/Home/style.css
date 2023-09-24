@@ -1,56 +1,135 @@
-#titleBox{
-    display: flex;
-    justify-content: space-between ;
-    /* margin: 30px 50px 60px 50px; */
-    height: 100%    ;
+#titleBox {
+  display: flex;
+  /* justify-content: space-between; */
+  /* margin: 30px 50px 60px 50px; */
+  height: 100%;
+  width: 100%;
 }
-#homePageTitle{
-    width: 700px;
-    font-family: 'Passion One';
-font-style: normal;
-font-weight: 400;
-font-size: 80px;
-line-height: 99px;
-color: #3D3A39;
-text-shadow: 0px 6px 30px rgba(0, 0, 0, 0.08);
-min-width: 660px;
+#homePageTitle {
+  width: 50%;
+  font-family: "Passion One";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 80px;
+  line-height: 99px;
+  color: #3d3a39;
+  text-shadow: 0px 6px 30px rgba(0, 0, 0, 0.08);
 }
-.dishPic{
-    margin: 0px 45px 0px 0px;
-    /* top: 60px; */
-    /* height: 200px; */
-    /* width: 612px;     */
-    position: relative;
+.searchBarBox{
+  width: 50%;
 }
-.bottomRow{
-    align-items: center;
-    height: 100%;
-    display: flex;
-    justify-content: space-around;
+.dishPic {
+  margin: 0px 45px 0px 0px;
+  /* top: 60px; */
+  /* height: 200px; */
+  /* width: 612px;     */
+  position: relative;
 }
-.page-container{
-    display: flex;
+.bottomRow {
+  align-items: center;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.content-wrap {
+  flex: 1;
+}
+#homePage {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 100%;
+  margin: 10px;
+}
+.home {
+  /* width: 80%; */
+  display: flex;
+  flex-direction: column;
+}
+.homeCon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+@media only screen and (max-width: 1500px) {
+  .dishPic {
+    width: 500px;
+  }
+  #homePageTitle {
+    /* width: 500px; */
+    font-size: 60px;
+  }
+}
+@media only screen and (max-width: 1300px) {
+  #homePageTitle{
+    width: 70%;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .dishPic {
+    width: 400px;
+    margin: 0px;
+  }
+  #homePageTitle {
+    /* width: 400px; */
+  }
+  .bottomRow {
+    justify-content: space-between;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .dishPic {
+    width: 300px;
+  }
+  #homePageTitle {
+    width: 60%;
+    font-size: 40px;
+    line-height: normal;
+  }
+  .searchContainer {
+    width: 200px;
+  }
+  .searchbar {
+    height: 40px;
+  }
+  .titleBox{
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .searchContainer {
+    width: 100%;
+    margin-bottom: 50px;
+  }
+  #homePageTitle {
+    width: 70%;
+    font-size: 30px;
+  }
+  .searchBarBox{
+    width: 100%;
+    margin-top: 20px;
+  }
+  .bottomRow{
     flex-direction: column;
-    min-height: 100vh;
+    align-items: flex-start;
+  }
+  .dishPic {
+    width: 300px;
+  }
 }
-.content-wrap{
-    flex: 1;
+@media only screen and (max-width: 500px) {
+  #homePageTitle {
+    width: 60%;
+    font-size: 20px;
+  }
+  .dishPic {
+    width: 250px;
 }
-#homePage{
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    height: 100%;
-    margin: 10px;
-}
-.home{
-    /* width: 80%; */
-    display: flex;
-    flex-direction: column;
-}
-.homeCon{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 25px;
 }

@@ -43,3 +43,51 @@
 #rightSideHead{
   display: flex;
 }
+
+@media screen and (max-width:1200px){
+  .title {
+    font-size: 25px;
+  }
+  .login {
+    font-size: 15px;
+  }
+  .header{
+    height: 60px;
+  }
+}
+@media screen and (max-width:600px){
+  .title {
+    font-size: 20px;
+    margin: 20px;
+  }
+  .login {
+    font-size: 18px;
+    margin: 20px;
+  }
+  .header{
+    height: 50px;
+  }
+}@media screen and (max-width:500px){
+  .title {
+    font-size: 18px;
+    margin: 15px;
+  }
+  .login {
+    font-size: 14px;
+    margin: 15px;
+  }
+  .header{
+    height: 40px;
+  }
+}
+@media screen and (max-width:400px){
+  .title {
+    font-size: 14px;
+  }
+  .login {
+    font-size: 14px;
+  }
+  .header{
+    height: 40px;
+  }
+}

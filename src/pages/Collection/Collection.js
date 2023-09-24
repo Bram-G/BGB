@@ -39,7 +39,6 @@ function Collection() {
   const handleRandom = (event) => {
     if (bgData.length === 0) {
       alert("Please add games to your collection first!");
-      
     }
     // grabs random game from bgData array (just the id)
     const randomGame = bgData[Math.floor(Math.random() * bgData.length)];
@@ -63,6 +62,25 @@ function Collection() {
     // Return null if no match is found
     return null;
   }
+  function handleImportCollection() {
+    let BGGusername = prompt("Please enter your BGG username");
+    fetch(`https://api.geekdo.com/xmlapi/collection/${BGGusername}`)
+      .then((response) => response.text())
+      .then((data) => {
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(data, "text/xml");
+        const itemNodes = xmlDoc.querySelectorAll("item");
+        const ids = Array.from(itemNodes).map((item) =>
+          item.getAttribute("objectid")
+        );
+       
+        const bggGameIds = { gameIds: ids };
+
+        API.addGames(userData._id, bggGameIds)
+        window.location.reload();
+      });
+    console.log(BGGusername);
+  }
 
   useEffect(() => {
     getUser();
@@ -81,7 +99,7 @@ function Collection() {
 
       await Promise.all(
         bgData.map(async (game) => {
-          const response = await fetch(
+          const response = await fetch(  
             `https://boardgamegeek.com/xmlapi2/thing?id=${game}&type=boardgame,boardgameexpansion&stats=1`
           );
           const xmlData = await response.text();
@@ -111,7 +129,7 @@ function Collection() {
         <div className="collectionBox">
           {imgData.map((game) => {
             return (
-              <div className="collectionContainer">
+              <div key={game.id} className="collectionContainer">
                 <div className="collectionImage" onClick={handleClick}>
                   <img
                     id={game.id}
@@ -131,9 +149,14 @@ function Collection() {
             );
           })}
         </div>
-        <button className="randomGame" onClick={handleRandom}>
-          Random Game
-        </button>
+        <div id="buttonBottom">
+          <button className="randomGame" onClick={handleRandom}>
+            Random Game
+          </button>
+          <button className="importGame" onClick={handleImportCollection}>
+            Import BoardGameGeek Collection
+          </button>
+        </div>
       </div>
     </div>
   );

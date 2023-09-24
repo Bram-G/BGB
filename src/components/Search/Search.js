@@ -50,32 +50,8 @@ function Search() {
       console.error("Error searching for board game:", error);
     }
   };
-
-  //TODO:Search for game by name using https://boardgamegeek.com/xmlapi2/search?parameters&query={GAMENAME}
-  //TODO: Take Thing numbers from search and use https://boardgamegeek.com/xmlapi2/thing?id={THINGNUMBER} to get game info
-  //TODO: Pass game info to Info Component and display on page
-
-  // const gameArray = [];
-  // const url = 'https://cors-anywhere.herokuapp.com/https://boardgamegeek.com/xmlapi/collection/Pahrrk';
-  // const gameFetch = fetch(url)
-  // .then(response => response.text())
-  // .then(xmlString => {
-  //   const parser = new DOMParser();
-  //   const xml = parser.parseFromString(xmlString, 'application/xml');
-  //   const itemNodes = xml.querySelectorAll('item');
-  //   itemNodes.forEach(itemNode => {
-  //     const nameNode = itemNode.querySelector('name');
-  //     const name = nameNode.textContent;
-  //     gameArray.push(name);
-  //   }
-  //   );
-  //   console.log(gameArray)
-  // })
-  // .catch(error => console.error(error));
-  // const consolelog = new DOMParser().parseFromString(danUserGames, "text/xml")
-
   return (
-    <Form onSubmit={handleSearch}>
+    <Form className="searchContainer" onSubmit={handleSearch}>
     <InputGroup
       className="searchBar"
       variant="secondary"

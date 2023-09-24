@@ -13,12 +13,13 @@
   justify-content: space-between;
 }
 .chatView {
-    overflow-y: scroll;
-  height: 500px;
+  overflow-y: scroll;
+  height: 200px;
   width: 80%;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   margin-bottom: 20px;
   padding: 20px;
+  background-color: #f6f6f6;
   /* background-color: rgb(139, 139, 139); */
 }
 .chatView::-webkit-scrollbar,
@@ -29,35 +30,43 @@
   border: 10px solid transparent;
 }
 
-.chatView::-webkit-scrollbar-thumb {        
+.chatView::-webkit-scrollbar-thumb {
   box-shadow: inset 0 0 0 10px;
 }
 
 .chatBotInputBox {
-  width: 85%;
+  width: 80%;
   height: 50px;
-  border: 2px solid black;
-  border-radius: 5px;
+  border: 0px solid black;
+  border-radius: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 23px;
   color: #4d4f4e;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  background: #f6f6f6;
 }
 .chatBotButton {
-  width: 150px;
-  height: 40px;
-  border: 2px solid black;
-  border-radius: 5px;
-  background-color: #fff;
-  color: black;
+  width: 15%;
+  height: 48px;
+  /* border: 2px solid black; */
+  border-radius: 8px;
+background: #3D3A39;
   font-weight: bold;
   cursor: pointer;
+  color: #FFF;
+text-align: center;
+font-family: Passion One;
+font-size: 24px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px; /* 100% */
+letter-spacing: 0.5px;
   transition: all 0.3s ease-in-out;
 }
 
@@ -67,42 +76,89 @@
 }
 
 .chatBotResponse {
-    margin: 10px 0px 0px 0px;
-  width: 100%;
+  margin: 10px 0px 0px 0px;
+  width: 50%;
   padding: 10px;
   display: flex;
   justify-content: flex-start;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 23px;
   color: #4d4f4e;
-  background-color: rgba(157, 157, 157, 0.281);
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
   align-items: center;
-  border-radius: 5px;
-  border: 2px solid black;
+  border-radius: 8px;
+  background: #e2e2e2;
+  /* border: 2px solid black; */
 }
 
 .chatBotUserInput {
-    margin: 10px 0px 0px 0px;
-  width: 100%;
+  margin: 10px 0px 0px 0px;
+  width: 50%;
   padding: 10px;
   display: flex;
-  justify-content: flex-end;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 23px;
   color: #4d4f4e;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
   background-color: rgb(255, 255, 255);
   align-items: center;
   border-radius: 5px;
-  border: 2px solid black;
+  /* border: 2px solid black; */
 }
-.chatBot{
+.chatBotUserInputContainer{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.chatBotResponseContainer{
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+.chatBot {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+@media screen and (max-width: 1200px) {
+  .chatBotButton {
+    font-size: 20px;
+}
+  
+}
+@media screen and (max-width: 800px) {
+  .chatBotButton {
+    font-size: 16px;
+    height: 35px;
+    width: 25%;
+}
+.chatBotInputBox{
+  height: 35px;
+  width: 70%;
+}
+.chatBotResponse{
+  font-size: 14px;
+  width: 70%;
+}
+.chatBotUserInput{
+  font-size: 14px;
+  width: 70%;
+}
+.chatBotInputBox{
+  font-size: 14px;
+}
+  
+}
+@media screen and (max-width: 500px) {
+  .chatBotButton {
+    font-size: 14px;
+    height: 35px;
+    width: 25%;
+}
+
 }

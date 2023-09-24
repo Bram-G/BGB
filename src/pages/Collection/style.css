@@ -32,7 +32,7 @@
   height: 100%;
   width: 100%;
   width: 250px;
-    height: 250px;
+  height: 250px;
   border-radius: 10px;
   transition: all 0.5s ease-in-out;
 }
@@ -54,21 +54,22 @@
   justify-content: center;
   width: 100%;
 }
-.collectionText{
-    margin-top: 20px;
-    margin-bottom: 30px;
+.collectionText {
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
-.collectionTitle{
-    font-family: Passion One;
-    font-size: 1.5rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-align: center;
-    color: #3d3a39;
-    text-shadow: 0px 6px 30px rgba(0, 0, 0, 0.08);
-    transition: all 0.5s ease-in-out;
-    text-decoration: none;
+.collectionTitle {
+  font-family: Passion One;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  margin-top: 20px;
+  line-height: normal;
+  text-align: center;
+  color: #3d3a39;
+  text-shadow: 0px 6px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.5s ease-in-out;
+  text-decoration: none;
 }
 #collectionTextStyle {
   color: #3d3a39;
@@ -86,19 +87,37 @@
   text-decoration: underline;
   font-size: 41px;
 }
-.randomGame{
+.randomGame {
   width: 250px;
   height: 48px;
   border-radius: 8px;
-background: #3D3A39;
-color: #FFF;
-text-align: center;
-font-family: Passion One;
-font-size: 24px;
-font-style: normal;
-font-weight: 400;
-line-height: 24px; /* 100% */
-letter-spacing: 0.5px;
-
+  background: #3d3a39;
+  color: #fff;
+  text-align: center;
+  font-family: Passion One;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 100% */
+  letter-spacing: 0.5px;
+  margin: 10px;
 }
-
+.importGame {
+  width: 250px;
+  height: 48px;
+  border-radius: 8px;
+  background: #3d3a39;
+  color: #fff;
+  text-align: center;
+  font-family: Passion One;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 100% */
+  letter-spacing: 0.5px;
+  margin: 10px;
+}
+#buttonBottom {
+  display: flex;
+  flex-direction: row;
+}

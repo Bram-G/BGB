@@ -11,10 +11,38 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    background-color: #e7e7e71e;
-    border-radius: 20px;
-    margin: 5px;
-    border: 2px #3E3A39 solid;
-    line-height: 20px;
-    height: 300px;
+    transition: all 0.2s ease-in-out;
+    /* background-color: blue; */
+    height: 350px;
+    width: 300px;
+    overflow: hidden;
+    position: relative;
+}
+.hotGamesView{
+    height: 500px;
+}
+.hotGame:hover{
+    
+    cursor: pointer;
+    scale: 1.05;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+}
+.react-multi-carousel-list{
+    height: 100%;
+}
+.carousel-item2{
+    display: flex;
+    justify-content: center;
+}
+@media screen and (max-width: 1600px){
+    .hotGame{
+        width: 250px;
+    }
+    
+}
+@media screen and (max-width: 1500px){
+    .hotGame{
+        width: 200px;
+    }
+    
 }

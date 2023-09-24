@@ -79,6 +79,23 @@ const API = {
         console.error("Error:", error);
       });
   },
+  addGames: (userId, gameIds) => {
+    const requestBody = gameIds
+    return fetch(`${URL_PREFIX}/api/users/getUser/bggcollection/${userId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody),
+    })
+    .then((response) => response.json())
+      .then((data) => {
+        console.log(data); // Handle the response data as needed
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });;
+  },
   removeGame: (userId, gameId) => {
     const requestBody = {
       userId: userId,
