@@ -46,12 +46,6 @@ function Profile() {
 
   }
 
-  const handleCollectionImport = async () => {
-    try {
-      prompt("Please enter your BGG username");
-      const response = await "/xmlapi2/collection?parameters";
-      console.log(response);
-    } catch (err) {} };
 
   useEffect(() => {
     getUser();
@@ -63,7 +57,7 @@ function Profile() {
 
       // console.log(onlyCapitalLetters(userData.username));
       function onlyCapitalLetters(str) {
-          const userIconText = str
+          const userIconText = str || " ";
           const onlyCapsUserIcon = userIconText.replace(/[^A-Z]+/g, "");
           if (onlyCapsUserIcon.length < 1) {
             const firstLetter = userIconText.charAt(0);
@@ -102,7 +96,7 @@ function Profile() {
     if (bgData.length >= 0) {
       fetchGameInfo();
     }
-  }, [bgData]);
+  }, [bgData, userData.username]);
   return (
     <div className="profile">
       <div className="profileContainer">
@@ -136,10 +130,10 @@ function Profile() {
         <div className="collectionBox">
           {imgData.map((game) => {
             return (
-              <div className="collectionContainer">
+              <div key={game.id} className="collectionContainer">
                 <div className="collectionImage" onClick={handleClick}>
                   <img
-                  key={game.id}
+                  
                     id={game.id}
                     src={game.image}
                     alt={game.title}

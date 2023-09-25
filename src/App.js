@@ -3,7 +3,6 @@ import './App.css';
 import {BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom';
 import Preloader from './components/Preloader';
 import Home from './pages/Home/Home';
-import Random from './pages/Random/Random';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Login from './pages/Login/Login';
@@ -69,7 +68,6 @@ function App() {
     <Route path="/" element={<Home/>} />
     <Route path="/profile" element={<Profile/>} />
     <Route path="/editProfile" element={<EditProfile/>} />
-    <Route path="/random" element={<Random/>} />
     <Route path="/search/:gameID" element={<SearchResults loggedIn={isLoggedIn}/>}/>
     <Route path="/login" element={<Login setToken={setToken} setUsername={setUsername} setIsLoggedIn={setIsLoggedIn}/>} />
     <Route path="/signup" element={<SignUp setToken={setToken} setUsername={setUsername} setIsLoggedIn={setIsLoggedIn}/>} />

@@ -167,8 +167,8 @@ function SearchResults(props) {
               </div>
             </div>
             <div id="rightRow">
-              <img className="gamePic" src={gameData.image}></img>
-              <img className="dishPicCol" src={Dish}></img>
+              <img className="gamePic" src={gameData.image} alt={gameData.title}></img>
+              <img className="dishPicCol" src={Dish} alt=""></img>
             </div>{" "}
           </div>
           <div id="bottomRow">

@@ -112,5 +112,19 @@
   cursor: pointer;
   transform: scale(1.1);
 }
+.btn-dark {
+  font-family: 'Passion One';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+  --bs-btn-bg: #3D3A39;
+}
+.button1 {
+  transition: all .2s ease-in-out;
+  width: 218px;
+  height: 48px;
+  border-radius: 8px;
+}
 
 

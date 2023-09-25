@@ -3,19 +3,13 @@ import "./style.css";
 import "react-multi-carousel/lib/styles.css";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import API from "../../utils/api";
-// import { set } from "mongoose";
 
 function EditProfile() {
   const [bgData, setBGData] = useState([]);
-  const [imgData, setImgData] = useState([]);
   const [userData, setUserData] = useState([]);
-  const [profileName, setProfileName] = useState("");
 
   const [pName, setPName] = useState([])
   const [pEmail, setPEmail] = useState([])
-
-  const [name, setName] = useState([])
-  const [email, setEmail] = useState([])
 
 
   const handleInputChange = (e) => {
@@ -25,15 +19,6 @@ function EditProfile() {
       setPName(value); // Update pName state
     } else if (name === 'email') {
       setPEmail(value); // Update pEmail state
-    }
-
-    const { target } = e;
-    const inputType = target.name;
-    const inputValue = target.value;
-    if (inputType === 'email') {
-      setEmail(inputValue);
-    } else if (inputType === 'username') {
-      setName(inputValue);
     }
   };
 
@@ -107,7 +92,7 @@ function EditProfile() {
             <Form.Control className="lato" name="email" onChange={handleInputChange} type="email" placeholder={userData.email} value={pEmail} />
           </Form.Group>
 
-          <Button className="btn-style-secondary lato" onClick={handleFormSubmit}>
+          <Button className="button1" variant="dark" onClick={handleFormSubmit}>
             Submit
           </Button>
         </Form>

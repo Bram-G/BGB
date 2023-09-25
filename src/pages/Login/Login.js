@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import "./style.css";
 import { Container, Form, Row, Button } from "react-bootstrap";
 import API from "../../utils/api";

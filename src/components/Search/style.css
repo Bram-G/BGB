@@ -34,8 +34,7 @@
 }
 
 @media only screen and (max-width: 1500px) {
-    .searchContainer{
-    }
+
     #basic-addon1{
         height: 40px;
     }
@@ -48,8 +47,6 @@
     }
 }
 @media only screen and (max-width: 1200px) {
-    .searchContainer{
-    }
     .input-group{
         height: 40px;
     }
@@ -62,6 +59,9 @@
     
 }
 @media only screen and (max-width:600px) {
+    .searchContainer{
+        margin-bottom: 20px;
+    }
     .input-group{
         height: 30px;
         

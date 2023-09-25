@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useCallback } from "react";
 import "./style.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -12,7 +12,7 @@ function DidYouMean(props) {
 
   const gameID = window.location.pathname.split("/")[2];
 
-  const fetchSecondaryData = async () => {
+  const fetchSecondaryData = useCallback( async () => {
     try {
       const arrayOfSimilarGames = [];
       // grabbing the search term from local storage
@@ -38,7 +38,7 @@ function DidYouMean(props) {
       } else {
         console.log("No search results found");
       }
-      console.log("fetchSecondaryData");
+      
       const gameSearchArray = localStorage.getItem("gameSearchArray");
       // checking if the array is empty
       if (gameSearchArray.length > 0) {
@@ -163,100 +163,9 @@ function DidYouMean(props) {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [gameSearchExpansionArray]) ;
 
-  const fetchTertiaryData = async () => {
-    const expansionApiUrl = `https://boardgamegeek.com/xmlapi2/thing?parameters&id=${gameSearchExpansionArray}&stats=1`;
-    fetch(expansionApiUrl)
-      .then((response) => response.text())
-      .then((xmlResponse) => {
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(xmlResponse, "text/xml");
 
-        // Extract each item element from the XML
-        const items = xmlDoc.querySelectorAll("item");
-
-        const expansionGameResults = [];
-
-        // Iterate through each item element and extract information
-        items.forEach((item) => {
-          const name = item
-            .querySelector('name[type="primary"]')
-            .getAttribute("value");
-          const id = item.getAttribute("id");
-          const imageElement = item.querySelector("image");
-          const image = imageElement ? imageElement.textContent : "";
-          const rankElement = xmlDoc.querySelector(
-            "item statistics ratings average"
-          );
-          const rank = rankElement ? rankElement.getAttribute("value") : "";
-          const unfilteredDescriptionElement =
-            xmlDoc.querySelector("item description");
-          const unfilteredDescription = unfilteredDescriptionElement
-            ? unfilteredDescriptionElement.textContent
-            : "";
-          // console.log(unfilteredDescription);
-          const nonLimitedDescription = unfilteredDescription.replace(
-            /[/&#?(\d+);/]/g,
-            "  "
-          );
-          const limitedDescription = limitDescription(
-            nonLimitedDescription,
-            100
-          );
-          function limitDescription(description, maxLength) {
-            if (description.length <= maxLength) {
-              return description;
-            } else {
-              return description.slice(0, maxLength - 3) + "...";
-            }
-          }
-
-          const minplayersElement = xmlDoc.querySelector("item minplayers");
-          const minplayers = minplayersElement
-            ? minplayersElement.getAttribute("value")
-            : "";
-
-          const maxplayersElement = xmlDoc.querySelector("item maxplayers");
-          const maxplayers = maxplayersElement
-            ? maxplayersElement.getAttribute("value")
-            : "";
-
-          const players = `${minplayers}-${maxplayers}`;
-
-          const minplaytimeElement = xmlDoc.querySelector("item minplaytime");
-          const minplaytime = minplaytimeElement
-            ? minplaytimeElement.getAttribute("value")
-            : "";
-
-          const maxplaytimeElement = xmlDoc.querySelector("item maxplaytime");
-          const maxplaytime = maxplaytimeElement
-            ? maxplaytimeElement.getAttribute("value")
-            : "";
-
-          const time = `${minplaytime}-${maxplaytime}`;
-
-          const expansionGameResult = {
-            id: id,
-            image: image,
-            name: name,
-            rank: rank,
-            desc: limitedDescription,
-            players: players,
-            time: time,
-          };
-
-          // Push the object to the gameResults array
-          expansionGameResults.push(expansionGameResult);
-        });
-
-        setGameSearchFinalExpansionArray(expansionGameResults);
-        console.log(gameSearchFinalExpansionArray);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -264,17 +173,101 @@ function DidYouMean(props) {
     };
 
     fetchData();
-  }, []);
+  }, [ fetchSecondaryData]);
 
   useEffect(() => {
     // Use the gameSearchExpansionArray as a dependency
-    const fetchTertiary = async () => {
-      if (gameSearchExpansionArray.length > 0) {
-        await fetchTertiaryData();
-      }
-    };
+        const fetchTertiaryData = async () => {
+          const expansionApiUrl = `https://boardgamegeek.com/xmlapi2/thing?parameters&id=${gameSearchExpansionArray}&stats=1`;
+          fetch(expansionApiUrl)
+            .then((response) => response.text())
+            .then((xmlResponse) => {
+              const parser = new DOMParser();
+              const xmlDoc = parser.parseFromString(xmlResponse, "text/xml");
+      
+              // Extract each item element from the XML
+              const items = xmlDoc.querySelectorAll("item");
+      
+              const expansionGameResults = [];
+      
+              // Iterate through each item element and extract information
+              items.forEach((item) => {
+                const name = item
+                  .querySelector('name[type="primary"]')
+                  .getAttribute("value");
+                const id = item.getAttribute("id");
+                const imageElement = item.querySelector("image");
+                const image = imageElement ? imageElement.textContent : "";
+                const rankElement = xmlDoc.querySelector(
+                  "item statistics ratings average"
+                );
+                const rank = rankElement ? rankElement.getAttribute("value") : "";
+                const unfilteredDescriptionElement =
+                  xmlDoc.querySelector("item description");
+                const unfilteredDescription = unfilteredDescriptionElement
+                  ? unfilteredDescriptionElement.textContent
+                  : "";
+                // console.log(unfilteredDescription);
+                const nonLimitedDescription = unfilteredDescription.replace(
+                  /[/&#?(\d+);/]/g,
+                  "  "
+                );
+                const limitedDescription = limitDescription(
+                  nonLimitedDescription,
+                  100
+                );
+                function limitDescription(description, maxLength) {
+                  if (description.length <= maxLength) {
+                    return description;
+                  } else {
+                    return description.slice(0, maxLength - 3) + "...";
+                  }
+                }
+      
+                const minplayersElement = xmlDoc.querySelector("item minplayers");
+                const minplayers = minplayersElement
+                  ? minplayersElement.getAttribute("value")
+                  : "";
+      
+                const maxplayersElement = xmlDoc.querySelector("item maxplayers");
+                const maxplayers = maxplayersElement
+                  ? maxplayersElement.getAttribute("value")
+                  : "";
+      
+                const players = `${minplayers}-${maxplayers}`;
+      
+                const minplaytimeElement = xmlDoc.querySelector("item minplaytime");
+                const minplaytime = minplaytimeElement
+                  ? minplaytimeElement.getAttribute("value")
+                  : "";
+      
+                const maxplaytimeElement = xmlDoc.querySelector("item maxplaytime");
+                const maxplaytime = maxplaytimeElement
+                  ? maxplaytimeElement.getAttribute("value")
+                  : "";
+      
+                const time = `${minplaytime}-${maxplaytime}`;
+      
+                const expansionGameResult = {
+                  id: id,
+                  image: image,
+                  name: name,
+                  rank: rank,
+                  desc: limitedDescription,
+                  players: players,
+                  time: time,
+                };
+      
+                // Push the object to the gameResults array
+                expansionGameResults.push(expansionGameResult);
+              });
+      
+              setGameSearchFinalExpansionArray(expansionGameResults);
+              
+            });
+        };
 
-    fetchTertiary();
+    fetchTertiaryData();
   }, [gameSearchExpansionArray]);
 
   const filteredGameSearchArray = gameSearchArray.filter((gameResult) => gameResult.id !== gameID);
@@ -310,6 +303,11 @@ function DidYouMean(props) {
       breakpoint: { max: 767, min: 464 },
       items: 2,
       slidesToSlide: 2, // optional, default to 1.
+    },
+    smallmobile: {
+      breakpoint: { max: 550, min: 200 },
+      items: 1,
+      slidesToSlide: 1, // optional, default to 1.
     },
   };
 

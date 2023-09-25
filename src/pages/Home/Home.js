@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useEffect } from "react";
 import "./style.css";
 import { Container } from "react-bootstrap";
 
@@ -27,7 +27,7 @@ function Home() {
           <div className="searchBarBox">
            <Search></Search>  
           </div>
-           <img className="dishPic" src={Dish}></img>
+           <img className="dishPic" src={Dish} alt=""></img>
            
         </div>
         <HotGames></HotGames>

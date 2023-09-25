@@ -1,6 +1,6 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useCallback } from "react";
 import "./style.css";
-import { Button, Container } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import toggleAdd from "./assets/toggleAdd.png";
 import toggleSub from "./assets/toggleSub.png";
 import people from "./assets/people.png";
@@ -19,15 +19,15 @@ function Info(props) {
   // console.log(gameID);
   //  ping it on the page and enter it as props.
   const currentUserId = props.userId;
+
+  const createGameLink = useCallback(() => {
+    const googleGameTitle = gameTitle.replace(/\s+/g, '+');
+    const googleGamePublisher = gamePublisher.replace(/\s+/g, '+');
+    setGameLink(`https://www.google.com/search?q=where+to+buy+${googleGameTitle}+by+${googleGamePublisher}+board+game`);
+  },[gameTitle, gamePublisher]);
   // console.log(currentUserId);
   useEffect(() => {
-    console.log(props);
     createGameLink();
-
-    
-    // if the game's id is in the user's collection, display the toggleSub image, else display the toggleAdd image.
-    // if the user clicks the toggleSub image, remove the game's id from the user's collection.
-    // if the user clicks the toggleAdd image, add the game's id to the user's collection.
     if (props.bgData.includes(props.gameID)) {
       setImgSrc(toggleSub);
       // console.log("in collection");
@@ -35,7 +35,7 @@ function Info(props) {
       setImgSrc(toggleAdd);
       // console.log("not in collection");
     }
-  }, [props]);
+  }, [createGameLink, props.bgData, props.gameID]);
 
 
 
@@ -61,11 +61,7 @@ if(props.loggedIn === true){
 
   // const gameLink = `https://www.amazon.com/s?k=${props.title}+board+game`
 
-  function createGameLink() {
-    const googleGameTitle = gameTitle.replace(/\s+/g, '+');
-    const googleGamePublisher = gamePublisher.replace(/\s+/g, '+');
-    setGameLink(`https://www.google.com/search?q=where+to+buy+${googleGameTitle}+by+${googleGamePublisher}+board+game`);
-  }
+
 
 
 
@@ -84,22 +80,22 @@ if(props.loggedIn === true){
       <div id="quickInfo">
         <div className="quickInfoSubBox">
           {/* change info text to {props.players} */}
-          <img className="quickInfoIcon" title="Players" src={people}></img>
+          <img className="quickInfoIcon" title="Players" src={people} alt="players"></img>
           <div className="quickInfoText">{props.players}</div>
         </div>
         <div className="quickInfoSubBox">
           {/* change info text to {props.playtime} */}
-          <img className="quickInfoIcon" title="Playtime" src={playtime}></img>
+          <img className="quickInfoIcon" title="Playtime" src={playtime} alt="playtime"></img>
           <div className="quickInfoText">{props.time}</div>
         </div>
         <div className="quickInfoSubBox">
           {/* change info text to {props.rank} */}
-          <img className="quickInfoIcon" title="Rank" src={rank}></img>
+          <img className="quickInfoIcon" title="Rank" src={rank} alt="rank"></img>
           <div className="quickInfoText">{props.rank}</div>
         </div>
         <div className="quickInfoSubBox">
           {/* change info text to {props.price} */}
-          <img className="quickInfoIcon" title="Cost" src={price}></img>
+          <img className="quickInfoIcon" title="Cost" src={price} alt="cost"></img>
           <div className="quickInfoText">{props.publisher}</div>
         </div>
       </div>

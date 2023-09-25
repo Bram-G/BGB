@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import "./style.css";
 import { Container,Form,Row,Button } from "react-bootstrap";
 import API from "../../utils/api";
@@ -9,14 +9,6 @@ function SignUp() {
   const [newUserEmail, setNewUserEmail] = useState('');
   const [newUserPassword, setNewUserPassword] = useState('');
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    console.log("Submit")
-    console.log(newUserName)
-    console.log(newUserEmail)
-    console.log(newUserPassword)
-
-  }
   const handlePassInputChange = (event) => {
     console.log("EventChanging")
     setNewUserPassword(event.target.value);

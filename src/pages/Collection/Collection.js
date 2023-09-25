@@ -7,7 +7,6 @@ function Collection() {
   const [bgData, setBGData] = useState([]);
   const [imgData, setImgData] = useState([]);
   const [userData, setUserData] = useState([]);
-  const [profileName, setProfileName] = useState("");
 
   const getUser = async () => {
     try {
@@ -90,12 +89,6 @@ function Collection() {
     const fetchGameInfo = async () => {
       const gameArray = [];
 
-      function onlyCapitalLetters(str) {
-        return str.replace(/[^A-Z]+/g, "");
-      }
-
-      // console.log(onlyCapitalLetters(userData.username));
-      setProfileName(onlyCapitalLetters(userData.username));
 
       await Promise.all(
         bgData.map(async (game) => {
