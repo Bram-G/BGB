@@ -27,7 +27,6 @@ function App() {
           const response = await API.isValidToken(savedToken);
           // console.log(response);
           if (response.isValid) {
-            setUsername(response.user.username);
             setIsLoggedIn(true);
             localStorage.setItem("username", response.user.username)
           } else{
@@ -44,8 +43,6 @@ function App() {
   }, [])
 
   const logout = () => {
-    setToken('');
-    setUsername("");
     setIsLoggedIn(false);
     localStorage.removeItem("token")
     localStorage.removeItem("username")
