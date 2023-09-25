@@ -1,4 +1,4 @@
-const URL_PREFIX = "https://boardgamebutler-api-ca4749730856.herokuapp.com/";
+const URL_PREFIX = "https://boardgamebutler-api-ca4749730856.herokuapp.com";
 
 const API = {
   // use this for the homepage (to show all the user profiles optional)
