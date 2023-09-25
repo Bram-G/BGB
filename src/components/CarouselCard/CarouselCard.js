@@ -14,7 +14,7 @@ function CarouselCard(props) {
       onClick={handleClick}
       className="carouselCard"
     >
-      <img src={props.image} className="carouselGameImg"></img>
+      <img src={props.image} alt={props.name} className="carouselGameImg"></img>
       <div className="carouselBottom">
         <div className="carouselBottomInfo">
           <div className="carouselGameName">{props.name}</div>
