@@ -28,9 +28,7 @@ function Login(props) {
     API.login(userObj).then((data) => {
       console.log(data);
       if (data.token) {
-        props.setToken(data.token);
         props.setIsLoggedIn(true);
-        props.setUsername(data.user.username);
         localStorage.setItem("token", data.token);
         localStorage.setItem("userId", data.user.id);
         navigate("/profile");
