@@ -26,7 +26,7 @@ function ChatBot(props) {
     // console.log(infoNugget);
 
     axios
-      .post("https://boardgamebutler-api-ca4749730856.herokuapp.com", { infoNugget })
+      .post("https://boardgamebutler-api-ca4749730856.herokuapp.com/chat", { infoNugget })
       .then((res) => {
         // setBotResponse(res.data);
         // console.log(botResponse);
