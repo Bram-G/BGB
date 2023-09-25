@@ -15,10 +15,9 @@ import Collection from './pages/Collection/Collection';
 import EditProfile from './pages/EditProfile/EditProfile';
 
 function App() {
-  const [load, updateLoad] = useState(true);
-  const [token, setToken] = useState("");
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState("");
+
 
   useEffect(() => {
     const getUser = async () => {
@@ -28,7 +27,6 @@ function App() {
           const response = await API.isValidToken(savedToken);
           // console.log(response);
           if (response.isValid) {
-            setToken(savedToken);
             setUsername(response.user.username);
             setIsLoggedIn(true);
             localStorage.setItem("username", response.user.username)
@@ -61,7 +59,7 @@ function App() {
 
   return (
 <Router>
-  <Preloader load={load}/>
+  <Preloader />
   <div className='App'>
     <Header loggedIn={isLoggedIn} setLoggedIn={setIsLoggedIn} logout={logout}/>
   <Routes>
@@ -69,8 +67,8 @@ function App() {
     <Route path="/profile" element={<Profile/>} />
     <Route path="/editProfile" element={<EditProfile/>} />
     <Route path="/search/:gameID" element={<SearchResults loggedIn={isLoggedIn}/>}/>
-    <Route path="/login" element={<Login setToken={setToken} setUsername={setUsername} setIsLoggedIn={setIsLoggedIn}/>} />
-    <Route path="/signup" element={<SignUp setToken={setToken} setUsername={setUsername} setIsLoggedIn={setIsLoggedIn}/>} />
+    <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn}/>} />
+    <Route path="/signup" element={<SignUp setIsLoggedIn={setIsLoggedIn}/>} />
     <Route path='/collection' element={<Collection/>} />
     <Route path="*" element={<Navigate to="/" />} />
   </Routes>

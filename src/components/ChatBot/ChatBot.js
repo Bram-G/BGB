@@ -1,6 +1,6 @@
-import react from "react";
+import React from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./style.css";
 
 function ChatBot(props) {
@@ -8,15 +8,8 @@ function ChatBot(props) {
   const gamePublisher = props.publisher;
 
   const [prompt, setPrompt] = useState("");
-  const [response, setResponse] = useState("");
   const [messages, setMessages] = useState([]);
-  const [inputValue, setInputValue] = useState("");
-  const [botResponse, setBotResponse] = useState("");
   const [isBotTyping, setIsBotTyping] = useState(false);
-
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
 
   const handleInput = (e) => {
     e.preventDefault();

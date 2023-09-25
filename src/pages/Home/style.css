@@ -108,8 +108,12 @@
     width: 100%;
     margin-bottom: 50px;
   }
+  #titleBox{
+    justify-content: center;
+    width: 100%;
+  }
   #homePageTitle {
-    width: 70%;
+    width: 100%;
     font-size: 30px;
   }
   .searchBarBox{
@@ -118,16 +122,21 @@
   }
   .bottomRow{
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
   .dishPic {
     width: 300px;
   }
+  .searchBarBox{
+    display: flex;
+    justify-content: center;
+  }
 }
 @media only screen and (max-width: 500px) {
   #homePageTitle {
-    width: 60%;
-    font-size: 20px;
+    width: 100%;
+    font-size: 24px;
+    text-align: center;
   }
   .dishPic {
     width: 250px;
