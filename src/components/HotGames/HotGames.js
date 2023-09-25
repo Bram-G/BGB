@@ -113,7 +113,7 @@ function HotGames() {
     desktop: {
       breakpoint: { max: 2000, min: 1600 },
       items: 4,
-      slidesToSlide: 5 // optional, default to 1.
+      slidesToSlide: 4 // optional, default to 1.
     },
     laptop: {
       breakpoint: { max: 1200, min: 1024 },
