@@ -65,18 +65,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/editProfile" element={<EditProfile />} />
-          <Route
-            path="/search/:gameID"
-            element={<SearchResults loggedIn={isLoggedIn} />}
-          />
-          <Route
-            path="/login"
-            element={<Login setIsLoggedIn={setIsLoggedIn} />}
-          />
-          <Route
-            path="/signup"
-            element={<SignUp setIsLoggedIn={setIsLoggedIn} />}
-          />
+          <Route path="/search/:gameID" element={<SearchResults loggedIn={isLoggedIn} />}/>
+          <Route path="/login"element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path="/signup" element={<SignUp setIsLoggedIn={setIsLoggedIn} />}/>
           <Route path="/collection" element={<Collection />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
