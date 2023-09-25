@@ -11,14 +11,19 @@ import API from "../../utils/api";
 
 function Info(props) {
     const [imgSrc, setImgSrc] = useState(toggleAdd);  
+    const [gameLink, setGameLink] = useState("");
     // const gameID = window.location.pathname.split("/")[2];
   const gameID = props.gameID;
+  const gameTitle = props.title || "No Title";
+  const gamePublisher = props.publisher || "No Publisher";
   // console.log(gameID);
   //  ping it on the page and enter it as props.
   const currentUserId = props.userId;
   // console.log(currentUserId);
   useEffect(() => {
-    // console.log(props);
+    console.log(props);
+    createGameLink();
+
     
     // if the game's id is in the user's collection, display the toggleSub image, else display the toggleAdd image.
     // if the user clicks the toggleSub image, remove the game's id from the user's collection.
@@ -42,7 +47,7 @@ if(props.loggedIn === true){
   if (imgSrc === toggleAdd) {
     setImgSrc(toggleSub);
     API.addGame(currentUserId,gameID);
-        console.log("added"  + gameID + "to collection" + currentUserId);
+        // console.log("added"  + gameID + "to collection" + currentUserId);
       } else {
         setImgSrc(toggleAdd);
         API.removeGame(currentUserId,gameID);
@@ -54,7 +59,16 @@ if(props.loggedIn === true){
     }
       }
 
-  const gameLink = `https://www.amazon.com/s?k=${props.title}+board+game`
+  // const gameLink = `https://www.amazon.com/s?k=${props.title}+board+game`
+
+  function createGameLink() {
+    const googleGameTitle = gameTitle.replace(/\s+/g, '+');
+    const googleGamePublisher = gamePublisher.replace(/\s+/g, '+');
+    setGameLink(`https://www.google.com/search?q=where+to+buy+${googleGameTitle}+by+${googleGamePublisher}+board+game`);
+  }
+
+
+
   return (
     <div>
       <div id="topInfo">
@@ -93,8 +107,8 @@ if(props.loggedIn === true){
         <div id="mainInfoText"> {props.description}</div>
       </div>
       <div id="buttonBox">
-        <a href={gameLink} target="blank"><Button className="button1" variant="dark">Buy on Amazon</Button></a>
-        <a href="" target="blank"><Button className="button2" variant="dark">Play Now on BGA</Button></a>
+        <a href={gameLink} target="blank"><Button className="button1" variant="dark">Find Retailer</Button></a>
+        {/* <a href="" target="blank"><Button className="button2" variant="dark">Play Now on BGA</Button></a> */}
       </div>
     </div>
   );

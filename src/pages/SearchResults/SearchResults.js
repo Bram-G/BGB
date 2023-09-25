@@ -116,7 +116,7 @@ function SearchResults(props) {
         if (savedToken) {
           const response = await API.isValidToken(savedToken);
           if (response.isValid) {
-            const data = await API.getSingleUser(response.user.username);
+            const data = await API.getSingleUser(response.user.id);
             // console.log(data);
             setUserData(data);
             setBGData(data.bg_collection);
@@ -129,10 +129,13 @@ function SearchResults(props) {
         console.log(err);
       }
     };
+
     // console.log(props.loggedIn)
     fetchUserData();
     fetchMainData();
   }, [gameID]);
+
+
 
   return (
     <div className="home">
@@ -177,7 +180,7 @@ function SearchResults(props) {
         </div>
         <div className="bottomHalf">
           <div className="didYouMeanContainer">
-            <DidYouMean></DidYouMean>
+            <DidYouMean currentId={gameID}></DidYouMean>
           </div>
         </div>
       </Container>

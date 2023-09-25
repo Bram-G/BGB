@@ -18,7 +18,7 @@ function Profile() {
         const response = await API.isValidToken(savedToken);
 
         if (response.isValid) {
-          const data = await API.getSingleUser(response.user.username);
+          const data = await API.getSingleUser(response.user.id);
           setBGData(data.bg_collection);
           setUserData(data);
         } else {
@@ -42,6 +42,7 @@ function Profile() {
     window.location.href = `/search/${itemId}`;
   };
   const handleEdit = (event) => {
+    window.location.href = `/editprofile`;
 
   }
 

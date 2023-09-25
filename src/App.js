@@ -13,6 +13,7 @@ import SearchResults from './pages/SearchResults/SearchResults';
 import API from "./utils/api"
 import Profile from './pages/Profile/Profile';
 import Collection from './pages/Collection/Collection';
+import EditProfile from './pages/EditProfile/EditProfile';
 
 function App() {
   const [load, updateLoad] = useState(true);
@@ -26,7 +27,7 @@ function App() {
         const savedToken = localStorage.getItem("token");
         if(savedToken) {
           const response = await API.isValidToken(savedToken);
-          console.log(response);
+          // console.log(response);
           if (response.isValid) {
             setToken(savedToken);
             setUsername(response.user.username);
@@ -52,6 +53,9 @@ function App() {
     localStorage.removeItem("token")
     localStorage.removeItem("username")
     localStorage.removeItem("userId")
+    // send user to home page after logout 
+
+
   }
 
 
@@ -64,6 +68,7 @@ function App() {
   <Routes>
     <Route path="/" element={<Home/>} />
     <Route path="/profile" element={<Profile/>} />
+    <Route path="/editProfile" element={<EditProfile/>} />
     <Route path="/random" element={<Random/>} />
     <Route path="/search/:gameID" element={<SearchResults loggedIn={isLoggedIn}/>}/>
     <Route path="/login" element={<Login setToken={setToken} setUsername={setUsername} setIsLoggedIn={setIsLoggedIn}/>} />

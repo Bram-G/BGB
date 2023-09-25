@@ -37,15 +37,15 @@ const API = {
   },
 
   // Use this for profile pages (for editing AND storefront views)
-  getSingleUser: (username) => {
-    return fetch(`${URL_PREFIX}/api/users/getUser/${username}`).then((res) =>
+  getSingleUser: (userId) => {
+    return fetch(`${URL_PREFIX}/api/users/getUser/${userId}`).then((res) =>
       res.json()
     );
   },
 
   // Use this when a user wants to update their profile
-  updateUser: (username, userObj) => {
-    return fetch(`${URL_PREFIX}/api/users/getUser/${username}`, {
+  updateUser: (userId, userObj) => {
+    return fetch(`${URL_PREFIX}/api/users/getUser/edit/${userId}`, {
       method: "PUT",
       body: JSON.stringify(userObj),
       headers: {
@@ -73,7 +73,7 @@ const API = {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data); // Handle the response data as needed
+        // console.log(data);
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -111,7 +111,7 @@ const API = {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data); // Handle the response data as needed
+        // console.log(data);
       })
       .catch((error) => {
         console.error("Error:", error);

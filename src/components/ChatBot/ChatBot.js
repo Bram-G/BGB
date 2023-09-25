@@ -30,7 +30,7 @@ function ChatBot(props) {
     setPrompt("");
 
     const infoNugget = { prompt, gameTitle, gamePublisher };
-    console.log(infoNugget);
+    // console.log(infoNugget);
 
     axios
       .post("http://localhost:8080/chat", { infoNugget })
@@ -59,7 +59,7 @@ function ChatBot(props) {
       <div className="chatBotContainer">
         <div className="chatView">
           <div className="chatBotResponse">
-            Hi, I'm the Board Game Butler. Ask me a question!
+            Hi, I'm the Board Game Butler. I'm Your personal Board Game AI bot. Ask me a question!
           </div>
           {messages.map((message, index) => (
             <div

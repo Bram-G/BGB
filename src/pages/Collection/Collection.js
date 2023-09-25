@@ -17,7 +17,7 @@ function Collection() {
         const response = await API.isValidToken(savedToken);
 
         if (response.isValid) {
-          const data = await API.getSingleUser(response.user.username);
+          const data = await API.getSingleUser(response.user.id);
           setBGData(data.bg_collection);
           setUserData(data);
         } else {

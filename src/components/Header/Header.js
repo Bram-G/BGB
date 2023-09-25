@@ -3,13 +3,17 @@ import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Header(props) {
+  function handleLogout() {
+    props.logout();
+  }
+
   return (
     <div className="header">
       <a href="/" className="title">Board Game Butler</a>
       {props.loggedIn ? (
         <div id="rightSideHead">
+        <a href="/" onClick={handleLogout} className="login"> Log Out </a> 
         <a href="/profile" className="login"> Profile</a>
-        <a href="/" onClick={props.logout} className="login"> Log Out </a> 
         </div>
       ) : (
         <div id="rightSideHead">
