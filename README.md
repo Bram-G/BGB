@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# Board Game Butler
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## DESCRIPTION
 
-## Available Scripts
+Introducing the delightful world of [BoardGameButler](https://boardgamebutler.netlify.app/), your ultimate companion for all things board games and tabletop fun! 🎲🃏
 
-In the project directory, you can run:
+BoardGameButler is a meticulously crafted full-stack application that Utilizes React, Bootstrap, AI technology, the BoardGameGeek API, and our very own MongoDB database.
 
-### `npm start`
+Within this enchanting digital realm, users can embark on a thrilling journey to discover, explore, and revel in the world of board games like never before.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+🔎 Uncover the secrets of your favorite games with extensive details at your fingertips.
+📚 Effortlessly import your treasured board game collection from your BoardGameGeek account.
+⭐ Curate your very own list of favorites to keep track of the games you love.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+But that's not all! The pièce de résistance of BoardGameButler is our charming AI companion, ever ready to join you on your tabletop adventures. 🤖
 
-### `npm test`
+⚖️ In the midst of a rule dispute? Let the AI expertly arbitrate and restore harmony to your gaming table.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+🗣️ Got questions about a game before you buy? Our trusty Board Game Butler AI is here to answer your questions!
 
-### `npm run build`
+Here is the sister repo for the backend API: https://github.com/Bram-G/BGB-BackEnd
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## THOUGHTS
+I came up with this idea to showcase my skills as a developer as well as showcase my love for board games. I wanted to create an application that would be useful to board game enthusiasts like me, and also be a fun project to work on. I learned a lot about React, React-Bootstrap, and AI technology while working on this project. I am proud of this project and I hope you enjoy it!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## CONTRIBUTERS
+Bram Gibson 
+    
+## Questions
+If you have any questions about this project, reach out to me on my github! 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+https://github.com/Bram-G
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    
+## INSTALLATION
+No installation needed! just follow this link to the deployed application! [HERE!](https://boardgamebutler.netlify.app/)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If you want to run this on your local machine you would need to clone this repo, as well as the backend repo above(linked above). Then run ```NPM install``` , ```NPM start``` and change the ```URL_PREFIX ``` variable to whatever local port you have the API application running on. Don't forget to seed the database using ```NPM run seed```.
+    
+## LICENSE
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+            Copyright  2023 Bram Gibson
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+            Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+            
+            The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+            
+            THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-## Learn More
+    
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
