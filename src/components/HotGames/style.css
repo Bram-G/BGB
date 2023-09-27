@@ -34,6 +34,37 @@
     display: flex;
     justify-content: center;
 }
+.retryButton{
+    height: 80px;
+    width: 80px;
+    margin-top: 10px;
+    border: none;
+    background-color: transparent;
+}
+.retryImage{
+    height: 100%;
+    width: 100%;
+}
+.retryButton:hover{
+    cursor: pointer;
+    animation: spin 1s linear infinite;
+}
+.retryButton:focus{
+    outline: none;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+#errorButtonContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    width: 100%;
+}
 @media screen and (max-width: 1600px){
     .hotGame{
         width: 250px;
