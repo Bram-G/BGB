@@ -31,7 +31,7 @@ function HotGames() {
       setHotGameIdArray(idArray);
       // console.log(hotGameIdArray);
 
-      for (let i = 0; i < 35; i++) {
+      for (let i = 0; i < idArray.length; i++) {
         const id = items[i].getAttribute("id");
         const name = items[i].querySelector("name").getAttribute("value");
         const rank = items[i].getAttribute("rank");

@@ -41,7 +41,7 @@ function SignUp() {
       if (res.message === "User created") {
         console.log("User Created");
         localStorage.setItem("token", res.token);
-        window.location.href = `/profile`;
+        window.location.href = `/login`;
         // Redirect to the user's account page or perform any other actions.
       } else if (res.message === "User already exists") {
         // HTTP status code 409 represents a conflict, meaning the user already exists.

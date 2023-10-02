@@ -83,12 +83,12 @@ function Login(props) {
                     Login
                   </Button>
 
-                  <p className="signUp">
+                  <div className="signUp">
                     Don't have an account? {" "}
                     <div className="underText">
                       <a href="/signup">Sign Up here!</a>
                     </div>
-                  </p>
+                  </div>
                 </div>
               </Form>
             </Row>

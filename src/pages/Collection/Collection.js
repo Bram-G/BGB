@@ -63,21 +63,37 @@ function Collection() {
   }
   function handleImportCollection() {
     let BGGusername = prompt("Please enter your BGG username");
-    fetch(`https://api.geekdo.com/xmlapi/collection/${BGGusername}`)
-      .then((response) => response.text())
-      .then((data) => {
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(data, "text/xml");
-        const itemNodes = xmlDoc.querySelectorAll("item");
-        const ids = Array.from(itemNodes).map((item) =>
-          item.getAttribute("objectid")
-        );
-       
-        const bggGameIds = { gameIds: ids };
-
-        API.addGames(userData._id, bggGameIds)
-        window.location.reload();
-      });
+  
+    const fetchData = () => {
+      fetch(`https://api.geekdo.com/xmlapi/collection/${BGGusername}`)
+        .then((response) => {
+          if (response.status === 202) {
+            // If status is 202, wait for 3 seconds and retry
+            return new Promise((resolve) => {
+              setTimeout(() => resolve(fetchData()), 3000);
+            });
+          } else {
+            return response.text();
+          }
+        })
+        .then((data) => {
+          const parser = new DOMParser();
+          const xmlDoc = parser.parseFromString(data, "text/xml");
+          const itemNodes = xmlDoc.querySelectorAll("item");
+          const ids = Array.from(itemNodes).map((item) =>
+            item.getAttribute("objectid")
+          );
+  
+          const bggGameIds = { gameIds: ids };
+  
+          API.addGames(userData._id, bggGameIds).then(() => {
+            window.location.reload();
+          });
+        });
+    };
+  
+    fetchData();
+  
     console.log(BGGusername);
   }
 
@@ -89,7 +105,9 @@ function Collection() {
     const fetchGameInfo = async () => {
       const gameArray = [];
 
+      try{
 
+      
       await Promise.all(
         bgData.map(async (game) => {
           const response = await fetch(  
@@ -107,7 +125,9 @@ function Collection() {
 
           gameArray.push({ name: title, image: image, id: game });
         })
-      );
+      )} catch (error) {
+        console.log(`error fetching data for game`, error);
+      }
       console.log(gameArray);
       setImgData(gameArray);
     };
